@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="panono">
+	<head>
+		<title>Panono</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src="libs.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+	</head>
+	<body class="container-fluid" ng-controller="indexCtrl">
+
+		<header class="row">
+			<nav class="navbar navbar-light bg-light col-12">
+				<span class="navbar-brand"><span ng-show="!expanded" ng-click="expanded = !expanded" class="navbar-toggler-icon"></span>Panono</span>
+			</nav>
+		</header>
+		<div class="row content-wrapper">
+		<aside class="sidebar col-sm-3" ng-class="{'moveOut': !expanded}">
+			<div class="row no-gutters">
+				<div class="col-sm-12 text-right">
+					<button class="btn btn-light close" ng-click="expanded = !expanded" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
+				</div>
+			</div>
+			<div class="row no-gutters">
+				 <div class="form-group col-sm-12">
+				 	<label for="View">View</label>
+				 	<select class="form-control" ng-model="viewBy" ng-options="view for view in views" ng-change="viewChange()"></select>
+				 </div>
+			</div>
+			<div class="row no-gutters">
+				 <div class="form-group col-sm-12">
+				 	<label for="Filter">Filter</label>
+				 	<select class="form-control" ng-options="filter for filter in filters" ng-model="filterBy" ng-change="filterChange()"></select>
+				 </div>
+			</div>
+		</aside> 
+		<main class="content" ng-class="expanded ? 'col-sm-9 offset-sm-3' : 'col-sm-12'">
+			<div class="tiles-container row no-gutters" ng-class="{'table-view' : !isGrid()}">
+				<div class="tile-wrapper" ng-class="isGrid() ? 'col-sm-4' : 'col-sm-12'" ng-repeat="tile in tiles | filter:filterTiles">
+					<div class="tile" ng-style="{{getImage(tile)}}">
+						<div class="col-sm-12 no-gutters">
+							<div class="col-sm-12 text-right">
+								<button class="btn" ng-class="tile.isFavorite ? 'btn-primary' : 'btn-success'" ng-click="processFavorite(tile)">{{tile.isFavorite ? 'Favorite' : 'Add'}}</button>
+							</div>
+						</div>
+						<div class="row no-gutters description">
+							<div class="col-sm-6 text-wrapper">{{tile.data.title}}</div>
+							<div class="col-sm-6 text-wrapper">{{tile.data.published_at | date:'mediumDate'}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		</div>
+	</body>
+</html>

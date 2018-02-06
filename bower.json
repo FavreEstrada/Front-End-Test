@@ -1,0 +1,23 @@
+{
+  "name": "test",
+  "description": "Test",
+  "main": "index.js",
+  "authors": [
+    "Favre Estrada"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "4.0.0",
+    "angular": "1.6.7",
+    "jquery": "^3.3.1"
+  }
+}
