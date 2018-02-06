@@ -106,5 +106,5 @@ module.exports = function(grunt) {
 
 
   grunt.registerTask("dev", ['jshint', 'concat:js', 'babel', 'less', 'concat:css', 'watch']);
-  grunt.registerTask('deploy', ['jshint', 'less', 'concat', 'copy']);
+  grunt.registerTask('build', ['jshint', 'concat:js', 'babel', 'less', 'concat:css']);
 };

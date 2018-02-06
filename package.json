@@ -5,11 +5,12 @@
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": ""
+    "start": "grunt build; http-server . -c-1"
   },
   "author": "Favre Estrada",
   "license": "ISC",
   "dependencies": {
+    "http-server": "^0.11.1",
     "npm": "^5.6.0"
   },
   "devDependencies": {
